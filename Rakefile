@@ -1,5 +1,5 @@
 require 'rubygems'
-require 'activerecord'
+require 'active_record'
 require 'rake'
 require 'ftools'
 
@@ -46,7 +46,7 @@ namespace :app do
       Marley::Comment.create( :author  => 'John Doe',
                               :email   => 'john@example.com',
                               :body    => 'Lorem ipsum dolor sit amet',
-                              :post_id => 'test-article' )
+                              :post_id => 'test-article-one' )
     end
   end
 

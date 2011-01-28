@@ -2,7 +2,7 @@
 CONFIG = YAML.load_file( File.join(File.dirname(__FILE__), 'config.yml') ) unless defined? CONFIG
 
 # ----- Setup SSH -------------------------------------------------------------
-set :user, "{REPLACE WITH YOUR SSH USERNAME}"
+set :user, "root"
 # -----------------------------------------------------------
 # set :password, "REPLACE WITH YOUR PASSWORD or USE SSH KEYS"
 # -----------------------------------------------------------
@@ -15,15 +15,15 @@ set :application, 'marley'
 set :scm, :git
 # set :branch, "deploy"
 set :git_enable_submodules, 1
-set :repository,  "{REPLACE WITH YOUR PATH TO YOUR REPOSITORY}"
+set :repository,  "https://github.com/cmarshall/marley"
 set :deploy_via, :remote_cache
-set :deploy_to, "{REPLACE WITH YOUR PATH}/#{application}"
+set :deploy_to, "/home/#{application}"
 set :use_sudo, false
 
 # ----- Setup servers ---------------------------------------------------------
-role :app, "{REPLACE WITH YOUR SERVER}"
-role :web, "{REPLACE WITH YOUR SERVER}"
-role :db,  "{REPLACE WITH YOUR SERVER}", :primary => true
+role :app, "184.106.156.62"
+role :web, "184.106.156.62"
+role :db,  "184.106.156.62", :primary => true
 
 
 # ***** No need to change anything below **************************************
