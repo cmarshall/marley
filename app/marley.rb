@@ -188,7 +188,7 @@ get '/:post_id/*' do
 end
 
 post '/sync' do
-  #throw :halt, 404 and return if not Marley::Configuration.github_token or Marley::Configuration.github_token.nil?
+  throw :halt, 404 and return if not Marley::Configuration.github_token or Marley::Configuration.github_token.nil?
   unless params[:token] && params[:token] == Marley::Configuration.github_token
     throw :halt, [500, "You did wrong.\n"] and return
   else
