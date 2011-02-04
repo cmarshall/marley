@@ -1,7 +1,7 @@
 <ul class="posts">
 <% @posts.each do |post| %>
 <li>
-  <h3 class='post_heading'><a href="/<%= post.id %>.html"><%= post.title %></a></h3>
+  <h2 class='post_heading'><a href="/<%= post.id %>.html"><%= post.title %></a></h2>
   <small><%= human_date post.published_on %></small>&mdash;
   <span class="perex"><%= post.perex %> (<%= post.comments.size %> comments)</span>
 </li>
