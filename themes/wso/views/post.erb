@@ -49,7 +49,7 @@
         <div class="number"><span class="nodisplay"># </span><%= index.succ %></div>
         <div class="author">
           <strong>
-          <%= comment.url ? "<a href=\"#{h(comment.url)}\">#{h(comment.author)}</a>" : h(comment.author) %>
+            <%= comment.email ? "<a href=\"mailto:#{h(comment.email)}\">#{h(comment.author)}</a>" : h(comment.author) %>
           </strong> wrote on <%= human_date(comment.created_at) %>:</div>
         <div class="message">
           <%= markup h(comment.body) %>
