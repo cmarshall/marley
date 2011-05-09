@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'active_record'
 require 'rake'
-require 'ftools'
+require 'fileutils'
 
 MARLEY_ROOT = '.'
 
