@@ -126,7 +126,9 @@ end
 get '/*?/?:post_id.html' do
   redirect "/"+params[:post_id].to_s+'.html' unless params[:splat].first == '' || params[:splat].first == 'admin'
   protected! if params[:splat].first == 'admin'
+  puts params[:post_id]
   @post = Marley::Post[ params[:post_id] ]
+  puts @post.class
   throw :halt, [404, not_found ] unless @post
   @page_title = "#{@post.title} #{Marley::Configuration.blog.name}"
   erb :post 

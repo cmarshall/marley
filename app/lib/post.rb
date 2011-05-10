@@ -79,9 +79,15 @@ module Marley
     # Extracted attributes can be configured with <tt>:except</tt> and <tt>:only</tt> options
     # TODO: Better formatting of the except/only code
     def self.extract_post_info_from(file, options={})
+      puts file
       raise ArgumentError, "#{file} is not a readable file" unless File.exist?(file) and File.readable?(file)
       options[:except] ||= []
       options[:only]   ||= Marley::Post.instance_methods # FIXME: Refaktorovat!!
+      puts "except"
+      puts options[:except]
+      puts "only"
+      puts options[:only]
+      puts "done"
       dirname       = File.dirname(file).split('/').last
       file_content  = File.read(file)
       meta_content  = file_content.slice!( self.regexp[:meta] )
@@ -97,10 +103,11 @@ module Marley
                                                                                       not options[:only].include? 'perex'
       post[:body]         = body                                                      unless options[:except].include? 'body' or
                                                                                       not options[:only].include? 'body'
-      post[:body_html]    = RDiscount::new( body ).to_html                            unless options[:except].include? 'body_html' or
-                                                                                      not options[:only].include? 'body_html'
-      post[:meta]         = ( meta_content ) ? YAML::load( meta_content.scan( self.regexp[:meta]).to_s ) : 
-                                               {} unless options[:except].include? 'meta' or not options[:only].include? 'meta'
+      post[:body_html]    = RDiscount::new( body ).to_html                            #unless options[:except].include? 'body_html' or
+                                                                                      #not options[:only].include? 'body_html'
+      post[:meta] = {}
+      post[:meta]         = (( meta_content ) ? YAML::load( meta_content.scan( self.regexp[:meta]).to_s ) : 
+                                               {}) unless options[:except].include? 'meta' or not options[:only].include? 'meta'
                                                                                       not options[:only].include? 'published_on'
       post[:updated_on]   = File.mtime( file )                                        unless options[:except].include? 'updated_on' or
                                                                                       not options[:only].include? 'updated_on'
