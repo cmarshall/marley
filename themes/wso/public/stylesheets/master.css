@@ -1,15 +1,30 @@
 @import 'comment_form.css';
 .clear { clear: both; float: none; font-size: 14px; }
 body { font-family: 'Buda', sans-serif; font-size: 18px; margin: 0; }
-h1, h2 { color: #444; padding: 0em 0em 0em 0em; margin:0; font-family: 'Rock Salt', sans-serif; }
-pre  { color: #444; font-size: 110%; white-space: pre-wrap; white-space: -moz-pre-wrap !important; padding: 1em; border: 4px solid #fafafa;}
-a    { color: #104EFF; }
-ul   { margin: 0; padding: 0; }
+h1, h2 { color: #444; padding: 0em 0em 0em 0em; margin:0; font-family: 'Expletus Sans', sans-serif; }
+pre  { 
+  color: #444; 
+  font-size: 110%; 
+  white-space: pre-wrap; 
+  white-space: -moz-pre-wrap !important; 
+  padding: 1em; 
+}
+a:hover { text-decoration:none;}
+ul   { margin: 0; padding: 0; list-style:none;}
+.posts li { margin-top:1.5em; padding-top:0px; }
 li span.perex  { font-size: 95%; color: #444; }
 
-.container { padding: 1.5em 4em 2em 4em; }
+.container { 
+  padding: 1.5em 4em 2em 4em; 
+  background: url('/images/body_bg.png') top left;
+}
 
-#article .body { max-width:600px; width:80%; }
+#article .body { 
+  max-width:600px; 
+  width:80%; 
+  border-left:1px solid #a6a6a6; 
+  padding-left:1em;
+}
 
 #article .categories { font-size: 80%; color: #999; }
 
@@ -53,16 +68,14 @@ li span.perex  { font-size: 95%; color: #444; }
 
 .header
 {
-  background: #b3d1b8; /* for non-css3 browsers */
-
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3d1b8', endColorstr='#ffffff'); /* for IE */
-  background: -webkit-gradient(linear, left top, left bottom, from(#b3d1b8), to(#fff)); /* for webkit browsers */
-  background: -moz-linear-gradient(top,  #b3d1b8,  #fff); /* for firefox 3.6+ */
+  background: url('/images/main_bg.png') top left no-repeat; /* for non-css3 browsers */
 
 
+  color:black;
   border-bottom:.8em solid #7eb39f;
   margin:0;
-  padding:2em 4em 1em 4em;
+  padding:2em 4em 1em 6em;
+  height:86px;
 }
 .header a { text-decoration:none; }
 
@@ -79,7 +92,7 @@ h3.post_heading  { margin:0; }
 
 #article .body pre
 {
-  border-left:1px solid black;
+  border-left:5px solid #659382;
 }
 
 #article .body pre code
