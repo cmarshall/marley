@@ -16,7 +16,7 @@ li span.perex  { font-size: 95%; color: #444; }
 
 .container { 
   padding: 1.5em 4em 2em 4em; 
-  background: url('/images/body_bg.png') top left;
+  background: url('/images/body_bg.png') top left repeat-y;
 }
 
 #article .body { 
