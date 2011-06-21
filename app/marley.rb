@@ -153,7 +153,7 @@ post '/:post_id/comments' do
     Pony.mail(:to => BLOG_MOD_EMAIL, 
               :from => BLOG_EMAIL, 
               :subject => "New Comment on #{@post.title}",
-              :message => "There is a new comment on #{@post.title} by #{params[:author]}" +
+              :body => "There is a new comment on #{@post.title} by #{params[:author]}" +
              "\nEmail: #{params[:email]}\n\n#{params[:body]}")
     redirect "/"+params[:post_id].to_s+'.html?thank_you=#comment_form'
   else
