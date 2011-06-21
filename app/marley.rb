@@ -11,6 +11,7 @@ require 'active_record'
 require 'rdiscount'
 require 'akismetor'
 require 'githubber'
+require 'pony'
 
 def load_or_require(file)
   (Sinatra::Application.environment == :development) ? load(file) : require(file)
@@ -21,6 +22,9 @@ configuration
 post
 comment
 }.each { |f| load_or_require File.join(File.dirname(__FILE__), 'lib', "#{f}.rb") }
+
+BLOG_EMAIL = 'blog@truckwss.com'
+BLOG_MOD_EMAIL = 'cmarshall@truckwss.com'
 
 # -----------------------------------------------------------------------------
 
@@ -146,6 +150,11 @@ post '/:post_id/comments' do
   # puts params.inspect
   @comment = Marley::Comment.create( params )
   if @comment.valid?
+    Pony.mail(:to => BLOG_MOD_EMAIL, 
+              :from => BLOG_EMAIL, 
+              :subject => "New Comment on #{@post.title}",
+              :message => "There is a new comment on #{@post.title} by #{params[:author]}" +
+             "\nEmail: #{params[:email]}\n\n#{params[:body]}")
     redirect "/"+params[:post_id].to_s+'.html?thank_you=#comment_form'
   else
     @page_title = "#{@post.title} #{Marley::Configuration.blog.name}"
